@@ -1,0 +1,15 @@
+{
+    "name": "Justin",
+    "hobbies": [
+        "programming",
+        "digital art",
+        "physics"
+    ],
+    "projects": [
+        "Baymax",
+        "game development",
+        "statistics calculator",
+        "physics simulator"
+    ],
+    "school": "Columbia University SEAS"
+}
