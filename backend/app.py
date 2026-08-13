@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS 
 import requests
 
-from memory import injectMemory
 from conversation import updateConversation, conversationHistory
 
 app = Flask(__name__)
@@ -11,15 +10,16 @@ CORS(app)
 @app.route('/api/chat', methods=['POST'])
 def get_data():
     data = request.get_json() 
-    updateConversation(
-        {
-            "role": "user",
-            "content": data["prompt"]
-        })
 
     if data is None:
         return jsonify({"error": "No valid data received"}), 400
 
+    updateConversation(
+            {
+                "role": "user",
+                "content": data["prompt"]
+            })
+    
     ollama_response = requests.post(
         'http://localhost:11434/api/chat',
         json={

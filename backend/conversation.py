@@ -1,7 +1,14 @@
+from memory import injectMemory
+
 conversationHistory = [
                 {
                     "role": "system",
-                    "content": "You are Baymax, a friendly conversational companion. Keep normal responses to 1-5 short sentences. Prioritize natural conversation over detailed explanations."
+                    "content": f"""You are Baymax, a friendly conversational companion. 
+                    
+                    {injectMemory()}
+
+                    Keep normal responses to 1-5 short sentences. Prioritize natural conversation over detailed explanations.
+                    """
                 }
                 ]
 

@@ -1,0 +1,14 @@
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.inverted-imageFALSE {
+    filter: invert(100%);
+}
+
+.response-container {
+    margin-top: -300px;
+}

@@ -1,9 +1,10 @@
 import json
 
-with open("memory.json", "r") as file:
-    memory = json.load(file)
+def injectMemory(): # this is how ill do it for now. very simple
+    with open("memory.json", "r") as file:
+        memory = json.load(file) 
 
-memory_context = f"""
+    return f"""
     Known information about the user:
 
     Name: {memory["name"]}
@@ -11,6 +12,3 @@ memory_context = f"""
     Projects: {", ".join(memory["projects"])}
     School: {memory["school"]}
 """
-
-def injectMemory(): # this is how ill do it for now. very simple
-    return memory_context
