@@ -11,3 +11,6 @@ memory_context = f"""
     Projects: {", ".join(memory["projects"])}
     School: {memory["school"]}
 """
+
+def injectMemory(): # this is how ill do it for now. very simple
+    return memory_context
