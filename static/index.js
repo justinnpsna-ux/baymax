@@ -20,6 +20,11 @@ async function getResponse(userPrompt) {
 
         console.log(data);
         ollamaOutput.textContent = data.message.content;
+        const utterance = new SpeechSynthesisUtterance(data.message.content);
+        utterance.rate = 0.75;
+        utterance.pitch = 0.9;
+        utterance.volume = 1.0;
+        speechSynthesis.speak(utterance);
 
     } catch (error) {
         console.error("Could not connect to the backend:", error);

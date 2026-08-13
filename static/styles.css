@@ -5,7 +5,7 @@
     align-items: center; 
 }
 
-.inverted-imageFALSE {
+.image.inverted {
     filter: invert(100%);
 }
 
