@@ -1,9 +1,11 @@
+
+
 const userInput = document.getElementById('userInput');
 const ollamaOutput = document.getElementById('ollama_response')
 
 const enterBtn = document.getElementById('enterBtn');
 
-async function getResponse(userPrompt) {
+export async function getResponse(userPrompt) {
     try {
         ollamaOutput.textContent = "thinking...";
         const response = await fetch('http://localhost:8000/api/chat', {
@@ -20,9 +22,11 @@ async function getResponse(userPrompt) {
 
         console.log(data);
         ollamaOutput.textContent = data.message.content;
+
         const utterance = new SpeechSynthesisUtterance(data.message.content);
         utterance.rate = 0.75;
         utterance.pitch = 0.9;
+        utterance.pitchMultiplier = 1.0
         utterance.volume = 1.0;
         speechSynthesis.speak(utterance);
 
