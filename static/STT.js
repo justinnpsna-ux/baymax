@@ -43,3 +43,9 @@ window.addEventListener('keydown', (event) => {
         recognition.start();
     }
 });
+
+window.addEventListener('keyup', (event) => {
+    if (event.code in keysPressed) {
+        keysPressed[event.code] = false;
+    }
+});
