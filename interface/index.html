@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="./styles.css">
     <title>Baymax, Evara</title>
 </head>
 <body>
-    <h4>baymax ver 0.1</h4>
+    <h4>baymax ver 0.1.2</h4>
     <div class="image-container">
         <image id="baymax" class="image" src="baymaxface.jpg" alt="baymax"></image>
     </div>
-    
-    <div class="response-container">
+
+    <div class="output-container">
+        <p id="ollama_response"></p>
+    </div>
+
+    <div class="input-container">
         <input type="text" id="userInput">
         <button id="enterBtn">enter</button>
     </div>
     
 
-    <p id="ollama_response"></p>
+    
 
     <script src="../static/index.js" type="module"></script>
     <script src="../static/STT.js" type="module"></script>

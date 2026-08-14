@@ -1,0 +1,78 @@
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.image.inverted {
+    filter: invert(100%);
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#userInput {
+    position: fixed;
+    top: 80vh;
+    right: 8vw;
+    width: 80vw;         
+    height: 5vh;   
+    opacity: 0.8;    
+    display: block; 
+    font-size: 30px;
+    background-color: gainsboro;
+    border: 20px solid gainsboro;
+    border-radius: 50px;
+}
+
+#userInput:hover {
+    background-color: rgb(179, 177, 177);
+    border: 20px solid rgb(179, 177, 177);
+
+}
+
+#enterBtn {
+    position: fixed;
+    top: 82vh;
+    right: 5vw;
+    width: 75px;         
+    height: 6vh;   
+    opacity: 1;    
+    display: block; 
+    font-size: 20px;
+    font-style: italic;
+    color: rgb(129, 84, 84);
+    background-color: rgb(224, 184, 184);
+    border: 0;
+    border-radius: 50px;
+
+}
+
+#enterBtn:hover {
+    color: rgb(0, 0, 0);
+    background-color: rgb(175, 116, 116);
+
+}
+
+.output-container {
+    margin-top: -300px;
+    margin-left: 7vw;
+    width: 80vw;         
+    height: 100vh;   
+    opacity: 0.8;    
+    display: block; 
+    font-size: 20px;
+    background-color: rgb(244, 244, 244);
+    border: 10px solid rgb(244, 244, 244);
+    border-radius: 50px;
+}
+
+#ollama_response {
+    padding-left: 30px;
+    padding-right: 30px;
+}

@@ -1,5 +1,7 @@
 import { getResponse } from "./index.js";
 
+const userInput = document.getElementById('userInput');
+
 const keysPressed = {
     ShiftRight: false
 }
@@ -22,6 +24,7 @@ recognition.onresult = (event) => {
     const transcript = event.results[0][0].transcript;
 
     getResponse(transcript);
+    userInput.value = transcript;
     console.log("You said:", transcript);
 };
 
