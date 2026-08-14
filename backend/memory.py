@@ -12,3 +12,9 @@ def injectMemory(): # this is how ill do it for now. very simple
     Projects: {", ".join(memory["projects"])}
     School: {memory["school"]}
 """
+#baymax suggests a memory > u approve it (in the future idea)
+def save_memory(): #button > flask > save_memory > update memory.JSON 
+    return
+
+def load_memory():
+    return

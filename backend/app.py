@@ -47,7 +47,6 @@ def get_data():
                     text_chunk = dataMessage.get("content", "")
 
                     if text_chunk:
-                        print(text_chunk)
                         full_response += text_chunk
                         yield text_chunk
             
