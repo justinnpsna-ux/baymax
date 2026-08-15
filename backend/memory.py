@@ -1,7 +1,7 @@
 import json
 
 def injectMemory(): # this is how ill do it for now. very simple
-    with open("memory.json", "r") as file:
+    with open("backend/memory.json", "r") as file:
         memory = json.load(file) 
 
     return f"""
