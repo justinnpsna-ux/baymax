@@ -22,7 +22,10 @@ def save_memory(): #button > flask > save_memory > update memory.JSON
     with open("backend/memory.json", "r") as file:
         memory = json.load(file)
 
-    memory[keyword] = desc
+    if memory[keyword]:
+        memory[keyword] = [memory[keyword], desc]
+    else:
+        memory[keyword] = desc
 
     with open("backend/memory.json", "w") as file:
         json.dump(memory, file, indent=4)  

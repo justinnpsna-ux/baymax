@@ -5,10 +5,13 @@ const memoryValue = document.getElementById('userInput-memory-update-value');
 
 const enterBtn = document.getElementById('enterBtn-memory-update');
 
+let currentUtterance; 
+
 async function updateMemory(memoryKey, memoryValue) {
 
-    window.speechSynthesis.cancel()
-    textToSpeech("memory updated")
+    window.speechSynthesis.cancel(); //it cuts off idk
+    currentUtterance = new SpeechSynthesisUtterance("memory updated");
+    window.speechSynthesis.speak(currentUtterance);
 
     try {
         const response = await fetch('http://localhost:8080/api/memory', {
