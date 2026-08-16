@@ -19,6 +19,10 @@ def save_memory(): #button > flask > save_memory > update memory.JSON
     data = request.get_json()
     keyword = data["key"]
     desc = data["value"]
+
+    if not keyword or not desc:
+        return "", 204
+
     with open("backend/memory.json", "r") as file:
         memory = json.load(file)
 
