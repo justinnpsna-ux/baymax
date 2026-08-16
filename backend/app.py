@@ -33,8 +33,7 @@ def get_data():
                 "options": {
                 #"num_predict": 500000
             }
-            }
-        )
+            })
 
         full_response = ""
 
@@ -75,6 +74,52 @@ def update_memory():
     load_memory(conversationHistory)
     return '', 204
 
+def extract_memory():
+    data = request.get_json() 
+
+    if data is None:
+        return jsonify({"error": "No valid data received"}), 400
+
+    memory_obj = requests.post(
+            'http://localhost:11434/api/chat',
+            json={
+                "model": "qwen3.5:9b",
+                "messages": {
+                    "role": "user",
+                    "content": f"""
+                        You are Baymax's memory extraction system.
+
+                        Analyze the user's message.
+
+                        Determine whether it contains durable, factual information about the user
+                        that would be useful in future conversations.
+
+                        Do NOT store temporary emotions, greetings, jokes, or information that is
+                        only relevant to the current conversation.
+
+                        If there is useful information, return ONLY valid JSON in this format:
+
+                        {
+                        "keywords": ["keyword1", "keyword2"],
+                        "fact": "One concise factual sentence about the user within their particular message."
+                        }
+
+                        If there is nothing worth remembering, return:
+
+                        null
+
+                        user's message: {data["prompt"]}
+                        """
+                    },
+                "think": False,
+                "stream": False,
+                "options": {
+                #"num_predict": 500000
+                }
+            })
+
+    memory_obj #this needs to go into longMemory.json
+    return '', 204
 
 if __name__ == '__main__':
     app.run(port=8080, debug=True)
