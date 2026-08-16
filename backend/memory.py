@@ -22,7 +22,7 @@ def save_memory(): #button > flask > save_memory > update memory.JSON
     with open("backend/memory.json", "r") as file:
         memory = json.load(file)
 
-    if memory[keyword]:
+    if keyword in memory:
         memory[keyword] = [memory[keyword], desc]
     else:
         memory[keyword] = desc
@@ -32,7 +32,15 @@ def save_memory(): #button > flask > save_memory > update memory.JSON
 
     return "", 204
 
-def load_memory():
-    with open("backend/memory.json", "r") as file:
-        memory = json.load(file)
-    return memory
+def load_memory(arr):
+    arr[0] =  {
+                "role": "system",
+                "content": f"""Don't use emojis. Act exactly like Baymax, the robotic personal healthcare companion from Big Hero 6.
+                Speak politely, use his catchphrases, and do not break character. 
+                    
+                {injectMemory()}
+    
+                Keep normal responses to 5 or less short sentences. Prioritize motivation and detailed explanations.
+                """
+            }
+    return '', 204

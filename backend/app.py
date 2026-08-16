@@ -4,7 +4,7 @@ import requests
 import json
 
 from conversation import updateConversation, conversationHistory
-from memory import save_memory
+from memory import save_memory, load_memory
 
 app = Flask(__name__)
 CORS(app)
@@ -72,6 +72,7 @@ def update_memory():
         return jsonify({"error": "No valid data received"}), 400
     
     save_memory()
+    load_memory(conversationHistory)
     return '', 204
 
 
