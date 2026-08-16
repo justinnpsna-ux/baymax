@@ -4,6 +4,7 @@ import requests
 import json
 
 from conversation import updateConversation, conversationHistory
+from memory import save_memory
 
 app = Flask(__name__)
 CORS(app)
@@ -25,12 +26,12 @@ def get_data():
         ollama_response = requests.post(
             'http://localhost:11434/api/chat',
             json={
-                "model": "llama3.1:8b",
+                "model": "qwen3.5:9b",
                 "messages": conversationHistory,
                 "think": False,
                 "stream": True,
                 "options": {
-                "num_predict": 5000
+                #"num_predict": 500000
             }
             }
         )
@@ -62,10 +63,17 @@ def get_data():
         mimetype="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
+
+@app.route('/api/memory', methods=['POST'])
+def update_memory():
+    data = request.get_json() 
     
+    if data is None:
+        return jsonify({"error": "No valid data received"}), 400
     
-    #return jsonify(full_reply)
-    #return jsonify(ollama_response)
+    save_memory()
+    return '', 204
+
 
 if __name__ == '__main__':
     app.run(port=8080, debug=True)

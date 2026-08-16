@@ -1,5 +1,4 @@
 
-
 const userInput = document.getElementById('userInput');
 const ollamaOutput = document.getElementById('ollama_response')
 
@@ -7,6 +6,7 @@ const enterBtn = document.getElementById('enterBtn');
 
 export async function getResponse(userPrompt) {
     let fullResponseText = ""; 
+    window.speechSynthesis.cancel()
 
     try {
         ollamaOutput.textContent = "";
@@ -54,7 +54,7 @@ export async function getResponse(userPrompt) {
     fullResponseText = ""
 }
 
-function textToSpeech(text) {
+export function textToSpeech(text) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 1.1;
     utterance.pitch = 0.9;
@@ -71,4 +71,3 @@ enterBtn.addEventListener('click', async () => {
     }
 })
 
-//getResponse('hi how are you doing?')
