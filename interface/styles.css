@@ -38,11 +38,11 @@
 
 #enterBtn {
     position: fixed;
-    top: 82vh;
-    right: 5vw;
-    width: 75px;         
-    height: 6vh;   
-    opacity: 1;    
+    top: 85vh;
+    right: 3vw;
+    width: 70px;         
+    height: 5vh;   
+    opacity: 0.8;    
     display: block; 
     font-size: 20px;
     font-style: italic;

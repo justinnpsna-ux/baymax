@@ -1,5 +1,7 @@
-from flask import request
+from flask import request, jsonify
 import json
+import requests
+from datetime import datetime
 
 def injectMemory(): # this is how ill do it for now. very simple
     with open("backend/memory.json", "r") as file:
@@ -15,7 +17,7 @@ def injectMemory(): # this is how ill do it for now. very simple
         return user_info
 
 #baymax suggests a memory > u approve it (in the future idea)
-def save_memory(): #button > flask > save_memory > update memory.JSON 
+def save_memory(fileName): #button > flask > save_memory > update memory.JSON 
     data = request.get_json()
     keyword = data["key"]
     desc = data["value"]
@@ -23,7 +25,7 @@ def save_memory(): #button > flask > save_memory > update memory.JSON
     if not keyword or not desc:
         return "", 204
 
-    with open("backend/memory.json", "r") as file:
+    with open(fileName, "r") as file:
         memory = json.load(file)
 
     if keyword in memory:
@@ -31,7 +33,7 @@ def save_memory(): #button > flask > save_memory > update memory.JSON
     else:
         memory[keyword] = desc
 
-    with open("backend/memory.json", "w") as file:
+    with open(fileName, "w") as file:
         json.dump(memory, file, indent=4)  
 
     return "", 204
@@ -48,3 +50,72 @@ def load_memory(arr):
                 """
             }
     return '', 204
+
+def extract_memory():
+    data = request.get_json() 
+
+    if data is None:
+        return jsonify({"error": "No valid data received"}), 400
+
+    try:
+        memory_obj = requests.post(
+                'http://localhost:11434/api/chat',
+                json={
+                    "model": "qwen3.5:9b",
+                    "messages": [ 
+                        {
+                        "role": "user",
+                        "content": f'''
+                            You are Baymax's memory extraction system.
+
+                            Analyze the user's message.
+
+                            Determine whether it contains durable, factual information about the user
+                            that would be useful in future conversations.
+
+                            Do NOT store temporary emotions, greetings, jokes, or information that is
+                            only relevant to the current conversation.
+
+                            If there is useful information, return ONLY valid JSON in this format:
+
+                            {{
+                                "keywords": ["keyword1", "keyword2"], 
+                                "fact": "One concise factual sentence about the user within their particular message.", 
+                                "type": "temporary OR persistent. (choose one depending on if this information would only be relevant in the near future or also in the far future)"
+                            }}
+
+                            If there is nothing worth remembering, return:
+
+                            null
+
+                            user's message: {data["prompt"]}
+                            '''
+                        }],
+                    "think": False,
+                    "stream": False,
+                    "options": {
+                    #"num_predict": 500000
+                    }
+                })
+    except json.JSONDecodeError:
+        return "error"
+
+    if memory_obj.json()["message"]["content"] == "null":
+        return '', 204
+    
+    save_longTerm_memory("backend/longTerm_memory.json", json.loads(memory_obj.json()["message"]["content"]))
+    return '', 204
+
+def save_longTerm_memory(fileName, data): #button > flask > save_memory > update memory.JSON 
+    timestamp = datetime.now().isoformat()
+
+    with open(fileName, "r") as file:
+        memory = json.load(file)
+
+    data["timestamp"] = timestamp
+    memory.append(data)
+
+    with open(fileName, "w") as file:
+        json.dump(memory, file, indent=4)  
+    
+    return "", 204
