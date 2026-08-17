@@ -1,0 +1,7 @@
+last updated: 08/17/2026
+
+* loop through longTerm_memory.json to find possible relevant information for current prompt.
+
+* add "importance" key to long term memory extraction (scale from 0.0 to 1.0)
+
+// ver 0.1.4: add wake up word/phrase using different API
