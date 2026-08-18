@@ -1,6 +1,6 @@
 last updated: 08/17/2026
 
-* loop through longTerm_memory.json to find possible relevant information for current prompt.
+* loop through longTerm_memory.json to find possible relevant information for current prompt. > a simple start is just to see if a word i used is in a memory. then u can do: get keywords for every user prompt and match that with memory keywords.
 
 * add "importance" key to long term memory extraction (scale from 0.0 to 1.0)
 

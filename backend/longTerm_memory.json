@@ -8,5 +8,42 @@
         "fact": "The user enjoys using Python with Flask for backend APIs connected to JavaScript front ends.",
         "type": "persistent",
         "timestamp": "2026-08-16T23:56:45.786712"
+    },
+    {
+        "keywords": [
+            "basketball"
+        ],
+        "fact": "The user enjoys playing basketball.",
+        "type": "persistent",
+        "timestamp": "2026-08-17T10:58:06.675065"
+    },
+    {
+        "keywords": [
+            "coding",
+            "stock market"
+        ],
+        "fact": "The user enjoys coding and picking up new skills, and has recently profited around 1k from the stock market.",
+        "type": "persistent",
+        "timestamp": "2026-08-17T20:05:26.173796"
+    },
+    {
+        "keywords": [
+            "parents",
+            "retirement",
+            "career"
+        ],
+        "fact": "The user has a goal to save enough money or work until their parents can retire.",
+        "type": "persistent",
+        "timestamp": "2026-08-17T20:07:05.027589"
+    },
+    {
+        "keywords": [
+            "coding",
+            "Baymax",
+            "Ollama"
+        ],
+        "fact": "The user is working on a coding project to build a Baymax-like brain using Ollama.",
+        "type": "persistent",
+        "timestamp": "2026-08-17T20:32:50.589233"
     }
 ]

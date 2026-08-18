@@ -70,10 +70,11 @@ def extract_memory():
 
                             Analyze the user's message.
 
-                            Determine whether it contains durable, factual information about the user
-                            that would be useful in future conversations.
+                            Determine whether it contains durable, factual information about the user,
+                            the user's goals and desires, what the user is currently seriously working on,
+                            or the user's serious opinion about ideas that would be useful in future conversations.
 
-                            Do NOT store temporary emotions, greetings, jokes, or information that is
+                            Do NOT store greetings, jokes, or information that is
                             only relevant to the current conversation.
 
                             If there is useful information, return ONLY valid JSON in this format:
@@ -106,7 +107,7 @@ def extract_memory():
     save_longTerm_memory("backend/longTerm_memory.json", json.loads(memory_obj.json()["message"]["content"]))
     return '', 204
 
-def save_longTerm_memory(fileName, data): #button > flask > save_memory > update memory.JSON 
+def save_longTerm_memory(fileName, data): 
     timestamp = datetime.now().isoformat()
 
     with open(fileName, "r") as file:

@@ -5,6 +5,7 @@ import json
 
 from conversation import updateConversation, conversationHistory
 from memory import save_memory, load_memory, extract_memory, save_longTerm_memory
+from relevance import get_keywords, find_relevance
 
 app = Flask(__name__)
 CORS(app)
@@ -19,8 +20,14 @@ def get_data():
     updateConversation(
             {
                 "role": "user",
-                "content": data["prompt"]
+                "content": f'''
+                possible relevant info: {find_relevance(get_keywords(), "backend/longTerm_memory.json")}
+                
+                user prompt: {data["prompt"]}
+
+                '''
             })
+    print(conversationHistory)
 
     def generate_stream():
         ollama_response = requests.post(
@@ -58,7 +65,6 @@ def get_data():
         full_response = ""
 
     extract_memory()
-    #save_longTerm_memory("backend/longTerm_memory.json")
 
     return Response(
         generate_stream(),
