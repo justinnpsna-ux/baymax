@@ -72,7 +72,8 @@ def extract_memory():
 
                             Determine whether it contains durable, factual information about the user,
                             the user's goals and desires, what the user is currently seriously working on,
-                            or the user's serious opinion about ideas that would be useful in future conversations.
+                            or the user's serious opinion about ideas or the people around them that would 
+                            be useful in future conversations.
 
                             Do NOT store greetings, jokes, or information that is
                             only relevant to the current conversation.
@@ -80,10 +81,15 @@ def extract_memory():
                             If there is useful information, return ONLY valid JSON in this format:
 
                             {{
-                                "keywords": ["keyword1", "keyword2"], 
+                                "keywords": ["keyword1", "keyword2", "NOUN keyword"], 
                                 "fact": "One concise factual sentence about the user within their particular message.", 
                                 "type": "temporary OR persistent. (choose one depending on if this information would only be relevant in the near future or also in the far future)"
                             }}
+
+                            Please include 1 last NOUN keyword that generalizes the user's prompt's subject 
+                            (for example: is the user talking about a "goal" or a "sport"? if so, include that last keyword)
+
+                            You can leave as many keywords as you think necessary
 
                             If there is nothing worth remembering, return:
 

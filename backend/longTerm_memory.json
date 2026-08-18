@@ -11,7 +11,8 @@
     },
     {
         "keywords": [
-            "basketball"
+            "basketball",
+            "sport"
         ],
         "fact": "The user enjoys playing basketball.",
         "type": "persistent",

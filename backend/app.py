@@ -21,13 +21,13 @@ def get_data():
             {
                 "role": "user",
                 "content": f'''
-                possible relevant info: {find_relevance(get_keywords(), "backend/longTerm_memory.json")}
+                possible relevant info: 
+                {find_relevance(get_keywords(), "backend/longTerm_memory.json")}
                 
-                user prompt: {data["prompt"]}
-
+                user prompt: 
+                {data["prompt"]}
                 '''
             })
-    print(conversationHistory)
 
     def generate_stream():
         ollama_response = requests.post(
