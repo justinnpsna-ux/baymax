@@ -11,7 +11,7 @@ def injectMemory(): # this is how ill do it for now. very simple
 
         for key, value in memory.items():
             if isinstance(value, list):
-                user_info += f"\n{key}: {", ".join(value)}"
+                user_info += f"\n{key}: {', '.join(value)}"
             else:
                 user_info += f"\n{key}: {value}"   
         return user_info
