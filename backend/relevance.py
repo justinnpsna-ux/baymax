@@ -18,7 +18,7 @@ def get_keywords():
                         {
                         "role": "user",
                         "content": f'''
-                            You are Baymax's memory extraction system.
+                            You are Baymax's memory relevance finding system.
 
                             Analyze the user's message.
 
@@ -42,7 +42,7 @@ def get_keywords():
                             If the user is asking for you to remember a specific detail or if you do remember a specific detail,
                             please come up with at least 1 keyword
 
-                            If there is no need to check for any type of relevance, return:
+                            If the user's message is simply a greeting or a joke, return:
 
                             null
 
