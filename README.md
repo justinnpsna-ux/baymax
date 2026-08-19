@@ -9,3 +9,5 @@ cmds to start backend (macOS terminal):
 
     python3 backend/app.py
 }
+
+pip install requirements.txt

@@ -17,8 +17,7 @@ def injectMemory(): # this is how ill do it for now. very simple
         return user_info
 
 #baymax suggests a memory > u approve it (in the future idea)
-def save_memory(fileName): #button > flask > save_memory > update memory.JSON 
-    data = request.get_json()
+def save_memory(fileName, data): #button > flask > save_memory > update memory.JSON 
     keyword = data["key"]
     desc = data["value"]
 
@@ -51,8 +50,7 @@ def load_memory(arr):
             }
     return '', 204
 
-def extract_memory():
-    data = request.get_json() 
+def extract_memory(data):
 
     if data is None:
         return jsonify({"error": "No valid data received"}), 400

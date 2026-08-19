@@ -22,7 +22,7 @@ def get_data():
                 "role": "user",
                 "content": f'''
                 possible relevant info: 
-                {find_relevance(get_keywords(), "backend/longTerm_memory.json")}
+                {find_relevance(get_keywords(data), "backend/longTerm_memory.json")}
                 
                 user prompt: 
                 {data["prompt"]}
@@ -64,7 +64,7 @@ def get_data():
         updateConversation({"role": "assistant", "content": full_response})
         full_response = ""
 
-    extract_memory()
+    extract_memory(data)
 
     return Response(
         generate_stream(),
@@ -79,7 +79,7 @@ def update_memory():
     if data is None:
         return jsonify({"error": "No valid data received"}), 400
     
-    save_memory("backend/memory.json")
+    save_memory("backend/memory.json", data)
     load_memory(conversationHistory)
     return '', 204
 

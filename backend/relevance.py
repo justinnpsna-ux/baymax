@@ -3,8 +3,7 @@ import json
 import requests
 from datetime import datetime
 
-def get_keywords():
-    data = request.get_json() 
+def get_keywords(data):
 
     if data is None:
         return jsonify({"error": "No valid data received"}), 400
