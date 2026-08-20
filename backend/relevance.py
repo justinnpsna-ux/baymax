@@ -30,7 +30,7 @@ def get_keywords(data):
                             (and 1 last NOUN keyword that generalizes the user's prompt's subject 
                             (for example: is the user talking about a "goal" or a "sport"? if so, include that last keyword))
 
-                            You can leave as many keywords as you think necessary
+                            You can leave as many keywords as you think necessary.
 
                             and return ONLY valid JSON in this format:
 

@@ -1,7 +1,11 @@
 last updated: 08/17/2026
 
-* loop through longTerm_memory.json to find possible relevant information for current prompt. > a simple start is just to see if a word i used is in a memory. then u can do: get keywords for every user prompt and match that with memory keywords.
+* Make all keywords "normal" words, meaning they can't
+be plural or use special characters.
 
 * add "importance" key to long term memory extraction (scale from 0.0 to 1.0)
 
-// ver 0.1.4: add wake up word/phrase using different API
+// ver 0.1.4: add cute baymax animated face
+
+// ver 0.1.5: add wake up word/phrase using different API
+

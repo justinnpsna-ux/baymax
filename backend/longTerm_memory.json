@@ -46,5 +46,42 @@
         "fact": "The user is working on a coding project to build a Baymax-like brain using Ollama.",
         "type": "persistent",
         "timestamp": "2026-08-17T20:32:50.589233"
+    },
+    {
+        "keywords": [
+            "working",
+            "college",
+            "education",
+            "employment",
+            "goals"
+        ],
+        "fact": "The user is currently employed while preparing to attend college in the upcoming fall semester.",
+        "type": "persistent",
+        "timestamp": "2026-08-19T14:07:47.202609"
+    },
+    {
+        "keywords": [
+            "social isolation",
+            "INTJ",
+            "alone spaces",
+            "skill development",
+            "personality traits"
+        ],
+        "fact": "The user believes they are an INTJ personality type who seeks alone spaces to improve their skills and currently feels they do not socialize as much as they should.",
+        "type": "persistent",
+        "timestamp": "2026-08-19T14:09:40.075687"
+    },
+    {
+        "keywords": [
+            "sister",
+            "Eireen",
+            "Drexel Lebow",
+            "Target",
+            "pilates",
+            "gym"
+        ],
+        "fact": "The user has a sister named Eireen who is attending Drexel University's LeBow College in the fall and currently works at Target while doing pilates and going to the gym.",
+        "type": "persistent",
+        "timestamp": "2026-08-19T23:18:28.151419"
     }
 ]

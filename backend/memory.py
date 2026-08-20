@@ -64,30 +64,28 @@ def extract_memory(data):
                         {
                         "role": "user",
                         "content": f'''
-                            You are Baymax's memory extraction system.
+                            You are Baymax's memory relevance finding system.
 
                             Analyze the user's message.
 
                             Determine whether it contains durable, factual information about the user,
-                            the user's goals and desires, what the user is currently seriously working on,
-                            or the user's serious opinion about ideas or the people around them that would 
-                            be useful in future conversations.
+                            the user's goals, dreams and desires, what the user is currently seriously working on,
+                            the user's serious opinion about ideas or the people around them, that would 
+                            be useful for having a memory of for future conversations.
 
-                            Do NOT store greetings, jokes, or information that is
-                            only relevant to the current conversation.
+                            If there might be a potential need to remember details for future conversations, come up with useful keywords 
+                            (and 1 last NOUN keyword that generalizes the user's prompt's subject 
+                            (for example: is the user talking about a "goal" or a "sport"? if so, include that last keyword))
 
-                            If there is useful information, return ONLY valid JSON in this format:
+                            You can leave as many keywords as you think necessary. 
+
+                            If there is information that could potentially be used in the future, return ONLY valid JSON in this format:
 
                             {{
                                 "keywords": ["keyword1", "keyword2", "NOUN keyword"], 
                                 "fact": "One concise factual sentence about the user within their particular message.", 
                                 "type": "temporary OR persistent. (choose one depending on if this information would only be relevant in the near future or also in the far future)"
                             }}
-
-                            Please include 1 last NOUN keyword that generalizes the user's prompt's subject 
-                            (for example: is the user talking about a "goal" or a "sport"? if so, include that last keyword)
-
-                            You can leave as many keywords as you think necessary
 
                             If there is nothing worth remembering, return:
 
@@ -106,6 +104,7 @@ def extract_memory(data):
         return "error"
 
     if memory_obj.json()["message"]["content"] == "null":
+        print("nothing worth remembering")
         return '', 204
     
     save_longTerm_memory("backend/longTerm_memory.json", json.loads(memory_obj.json()["message"]["content"]))
